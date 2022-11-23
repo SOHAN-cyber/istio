@@ -4,9 +4,9 @@ metadata:
   name: test-virtual-service
 spec:
   hosts:
-    - "test1.com"   #Name of the host that this service will check for routing rule
+    - "test1.com"   
   gateways:
-    - "my-app-gateway"  #Name of the gateway that you want to use for this virtual service
+    - "my-app-gateway"  
   http:
     - match:
         - uri:

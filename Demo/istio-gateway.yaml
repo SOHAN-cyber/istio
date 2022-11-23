@@ -4,11 +4,11 @@ metadata:
   name: my-app-gateway
 spec:
   selector:
-    istio: ingressgateway    #Label of your ingress gateway in istio namespace
+    istio: ingressgateway    
   servers:
     - port:
         number: 80
         name: http
         protocol: HTTP
       hosts:
-        - "test1.com"   #This Host can we wildcard or multiple host entry
+        - "test1.com"  
