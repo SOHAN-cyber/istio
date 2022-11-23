@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-v1
+spec:
+  selector:
+    matchLabels:
+      app: canary
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: canary
+        version: v1
+    spec:
+      containers:
+      - image: dogra21703/canary:1
+        name: dogra
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-v2
+spec:
+  selector:
+    matchLabels:
+      app: canary
+      version: v2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: canary
+        version: v2
+    spec:
+      containers:
+      - image: dogra21703/canary:2
+        name: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-v3
+spec:
+  selector:
+    matchLabels:
+      app: canary
+      version: v3
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: canary
+        version: v3
+    spec:
+      containers:
+      - image: dogra21703/canary:3
+        name: devops
+        ports:
+        - containerPort: 80

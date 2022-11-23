@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: test-virtual-service
+spec:
+  hosts:
+    - "canary.com"   
+  gateways:
+    - "canary"  
+    - mesh
+  http: 
+  - route:
+    - destination:
+        host: my-canary-svc
+        subset: v1
+      weight: 10 
+    - destination:
+        host: my-canary-svc
+        subset: v2
+      weight: 10
+    - destination:
+        host: my-canary-svc
+        subset: v3
+      weight: 80
