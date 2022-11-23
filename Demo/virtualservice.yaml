@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: test-virtual-service
+spec:
+  hosts:
+    - "test1.com"   #Name of the host that this service will check for routing rule
+  gateways:
+    - "my-app-gateway"  #Name of the gateway that you want to use for this virtual service
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: nginx-svc
+            port:
+              number: 80

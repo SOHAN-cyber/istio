@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: my-app-gateway
+spec:
+  selector:
+    istio: ingressgateway    #Label of your ingress gateway in istio namespace
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "test1.com"   #This Host can we wildcard or multiple host entry
