@@ -1,5 +1,5 @@
 # Conculsion:
-Once you have deployed the header based routing deployment using our manifest use the below command on linux or mac based OS.
+Once you have deployed the query based routing deployment using our manifest. Open the below url in browser
 
 ```
 curl  http://sohan.com/?user=v1
