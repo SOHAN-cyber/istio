@@ -4,7 +4,7 @@ metadata:
   name: test-virtual-service
 spec:
   hosts:
-    - "sohan.com"   
+    - "istio-lab.com"   
   gateways:
     - "header"
     - mesh
