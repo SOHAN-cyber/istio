@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: test-virtual-service
+spec:
+  hosts:
+    - "sohan.com"   
+  gateways:
+    - "header"
+    - mesh
+  http:
+  - match:
+      - headers:
+          user:
+            exact: v1
+    route:
+    - destination:
+        host: header-svc
+        subset: v1
+  - match:
+      - headers:
+          user:
+            exact: v2
+    route:
+    - destination:
+        host: header-svc
+        subset: v2
+  - route:
+    - destination:
+        host: header-svc 
+        subset: v3
