@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: query-vs-svc
+spec:
+  hosts:
+    - "sohan.com"   
+  gateways:
+    - "query-gateway"
+    - mesh
+  http:
+  - match:
+      - queryParams:
+          user:
+            exact: v1
+    route:
+    - destination:
+        host: query-svc
+        subset: v1
+  - match:
+      - queryParams:
+          user:
+            exact: v2
+    route:
+    - destination:
+        host: query-svc
+        subset: v2
+  - route:
+    - destination:
+        host: query-svc 
+        subset: v3
