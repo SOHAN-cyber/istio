@@ -4,12 +4,17 @@ metadata:
   name: test-virtual-service
 spec:
   hosts:
-    - "istio-lab.com"   
+    - "sohan.com"   
   gateways:
     - "header"
     - mesh
   http:
-  - match:
+  - fault:
+      delay:
+        percentage:
+          value: 100.0
+        fixedDelay: 10s
+    match:
       - headers:
           user:
             exact: v1
@@ -17,7 +22,12 @@ spec:
     - destination:
         host: header-svc
         subset: v1
-  - match:
+  - fault:
+      delay:
+        percentage:
+          value: 100.0
+        fixedDelay: 20s
+    match:
       - headers:
           user:
             exact: v2

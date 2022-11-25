@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: uri-vs-svc
+spec:
+  hosts:
+    - "ishu.com"   
+  gateways:
+    - "uri-gateway"
+    - mesh
+  http:
+  - match:
+      - uri:
+          exact: '^/user/v1'
+        ignoreUriCase: true
+    route:
+    - destination:
+        host: uri-svc
+        subset: v1
+  - match:
+      - uri:
+          regex: '^/home/v2'
+        ignoreUriCase: true
+    route:
+    - destination:
+        host: uri-svc
+        subset: v2
+  - route:
+    - destination:
+        host: uri-svc 
+        subset: v3
