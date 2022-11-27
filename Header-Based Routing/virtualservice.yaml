@@ -9,7 +9,8 @@ spec:
     - "header"
     - mesh
   http:
-  - fault:
+  - timeout: 0.001s
+    fault:
       delay:
         percentage:
           value: 100.0
@@ -22,7 +23,12 @@ spec:
     - destination:
         host: header-svc
         subset: v1
-  - fault:
+    retries:
+      attempts: 3
+      perTryTimeout: 3s
+      retryOn: 5xx
+  - timeout: 0.001s
+    fault:
       delay:
         percentage:
           value: 100.0
@@ -35,7 +41,16 @@ spec:
     - destination:
         host: header-svc
         subset: v2
+    retries:
+      attempts: 3
+      perTryTimeout: 2s  
+      retryOn: 5xx
   - route:
     - destination:
         host: header-svc 
         subset: v3
+    timeout: 0.01s
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: 5xx
