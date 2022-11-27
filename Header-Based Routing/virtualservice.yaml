@@ -54,7 +54,7 @@ spec:
       attempts: 3
       perTryTimeout: 2s
       retryOn: 5xx
-    mirror:
-      host: header-svc
-      subset: v1
-    mirrorPercent: 100
+    # mirror:
+    #   host: header-svc
+    #   subset: v1
+    # mirrorPercent: 100
