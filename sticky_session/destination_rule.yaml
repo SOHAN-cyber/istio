@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+    name: sticky-svc
+spec:
+    host: sticky-svc
+    subsets:
+      - name: v1
+        labels:
+          version: v1
+    trafficPolicy:
+      loadBalancer:
+        consistentHash:
+          httpHeaderName: x-user

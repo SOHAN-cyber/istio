@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: sticky-svc
+  namespace: default
+spec:
+  hosts:
+    - 'sohan.com'
+  gateways:
+    - gateway
+  http:
+    - route:
+      - destination:
+          host: sticky-svc
+          subset: v1

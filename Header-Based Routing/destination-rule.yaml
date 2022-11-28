@@ -13,7 +13,11 @@ spec:
       version: v1
     trafficPolicy:
       loadBalancer:
-        simple: ROUND_ROBIN
+        # simple: ROUND_ROBIN
+        consistentHash:
+          httpCookie:
+            name: user 
+            ttl: 1800s  #lifetime of cookies 
   - name: v2
     labels:
       version: v2
