@@ -11,10 +11,13 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - "bookinfo.com"
+        - "test.bookinfo.com"
     - port:
         number: 443
         name: https
         protocol: HTTPS
       hosts:
-        - "bookinfo.com"
+        - "test.bookinfo.com"
+      tls:
+        mode: SIMPLE
+        credentialName: test-bookinfo-certs
