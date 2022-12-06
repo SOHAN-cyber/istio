@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ninja-dep
+  namespace: ninja
+  labels:
+    app:  nginx
+  annotations:
+    kubernetes.io/change-cause: "changing app version from latest to 1.16"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app:  "nginx"
+  template:
+    metadata:
+      name: "nginx"
+      labels:
+        app: "nginx"
+    spec:
+      containers:
+      - name: "nginx"
+        image: "dogra21703/istio-header:v3"
+        ports:
+        - containerPort: 80
