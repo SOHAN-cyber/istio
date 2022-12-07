@@ -14,5 +14,5 @@ spec:
         notRequestPrincipals: ["*"]
     to:         #This will deny all the traffic to /header path with JWT token
       - operation:
-          paths:
-            - "/v1"
+          hosts:
+            - "sohan.com"

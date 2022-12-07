@@ -4,7 +4,7 @@ metadata:
   name: test-virtual-service
 spec:
   hosts:
-    - "canary.com"   
+    - "test.com"   
   gateways:
     - "canary"  
     - mesh
