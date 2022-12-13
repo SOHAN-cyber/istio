@@ -9,10 +9,9 @@ spec:
       istio: ingressgateway
   action: DENY
   rules:
-  - from:
-    - source:
-        notRequestPrincipals: ["*"]
-    to:         #This will deny all the traffic to /header path with JWT token
-      - operation:
-          hosts:
-            - "sohan.com"
+  - to:         #This will deny all the traffic to /header path with JWT token
+    - operation:
+        hosts: ["sohan.com"]
+    when:
+    - key: request.headers[user]
+      values: ["v1"]

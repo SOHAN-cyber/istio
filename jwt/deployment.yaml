@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: dogra21701/istio-header:v1
+      - image: dogra21703/istio-header:v1
         name: dogra
         ports:
         - containerPort: 80
@@ -37,7 +37,7 @@ spec:
         version: v2
     spec:
       containers:
-      - image: dogra21701/istio-header:v2
+      - image: dogra21703/istio-header:v2
         name: nginx
         ports:
         - containerPort: 80
@@ -45,7 +45,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: header-v1
+  name: header-v3
 spec:
   selector:
     matchLabels:
@@ -59,7 +59,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: dogra21701/istio-header:v1
+      - image: dogra21703/istio-header:v3
         name: devops
         ports:
         - containerPort: 80
