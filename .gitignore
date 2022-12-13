@@ -1,3 +1,6 @@
 alertmanager.yaml
 new-alerting-rule.yaml
 prom.yaml
+alertmanager.tmpl
+channel-level.yaml
+log.yaml
